@@ -1,0 +1,19 @@
+<resources>
+    <string name="api_base_url" translatable="false">https://itunes.apple.com/</string>
+    <string name="app_name">ITunesFinder</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Fragment Search -->
+    <string name="fragment_search_title">Search albums</string>
+    <string name="fragment_search_field_search">Type here your artist&#8230;</string>
+    <string name="fragment_search_no_album_found">No albums found</string>
+
+    <!-- Dialog Album -->
+    <string name="dialog_album_title">Album details</string>
+    <string name="dialog_album_genre">Primary genre name</string>
+    <string name="dialog_album_price">Collection price</string>
+    <string name="dialog_album_price_format">%.2f %s</string>
+    <string name="dialog_album_copyright">Copyright</string>
+
+</resources>
