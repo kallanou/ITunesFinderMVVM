@@ -1,17 +1,16 @@
 package ca.kallanou.itunesfinder.data.repositories
 
-import ca.kallanou.itunesfinder.data.api.Api
-import ca.kallanou.itunesfinder.data.mappers.AlbumDataEntityMapper
-import ca.kallanou.itunesfinder.model.Album
+import ca.kallanou.itunesfinder.data.networking.apis.ItunesApi
+import ca.kallanou.itunesfinder.data.networking.models.toAlbums
+import ca.kallanou.itunesfinder.domain.repositories.RemoteAlbumsRepository
+import ca.kallanou.itunesfinder.domain.models.Album
 import io.reactivex.Observable
 
-class RemoteAlbumsRepositoryImpl(private val api: Api): RemoteAlbumsRepository {
-
-    private val albumDataMapper = AlbumDataEntityMapper()
+class RemoteAlbumsRepositoryImpl(private val itunesApi: ItunesApi): RemoteAlbumsRepository {
 
     override fun searchAlbums(term: String): Observable<List<Album>> {
-        return api.searchAlbums(term).map { results ->
-            results.albums.map { albumDataMapper.mapFrom(it) }
+        return itunesApi.searchAlbums(term).map { results ->
+            results.albums.toAlbums()
         }
     }
 

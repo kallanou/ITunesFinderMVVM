@@ -6,13 +6,13 @@
     <data>
         <variable
             name="viewModel"
-            type="ca.kallanou.itunesfinder.view.search.SearchViewModel" />
+            type="ca.kallanou.itunesfinder.ui.features.search.SearchViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.features.main.MainActivity">
 
         <EditText
             android:id="@+id/search_album_edit_text"

@@ -1,13 +1,13 @@
 package ca.kallanou.itunesfinder
 
 import android.app.Application
-import ca.kallanou.itunesfinder.di.DaggerMainComponent
-import ca.kallanou.itunesfinder.di.MainComponent
-//import ca.kallanou.itunesfinder.di.modules.AppModule
-import ca.kallanou.itunesfinder.di.modules.DataModule
-import ca.kallanou.itunesfinder.di.modules.NetworkModule
-import ca.kallanou.itunesfinder.di.search.SearchAlbumsModule
-import ca.kallanou.itunesfinder.di.search.SearchSubComponent
+import ca.kallanou.itunesfinder.ui.base.di.DaggerMainComponent
+import ca.kallanou.itunesfinder.ui.base.di.MainComponent
+//import ca.kallanou.itunesfinder.ui.base.di.modules.AppModule
+import ca.kallanou.itunesfinder.data.networking.di.modules.DataModule
+import ca.kallanou.itunesfinder.data.networking.di.modules.NetworkModule
+import ca.kallanou.itunesfinder.ui.base.di.search.SearchAlbumsModule
+import ca.kallanou.itunesfinder.ui.base.di.search.SearchSubComponent
 
 class ITunesFinderApp: Application() {
 
@@ -16,7 +16,6 @@ class ITunesFinderApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
-
         initDependencies()
     }
 
