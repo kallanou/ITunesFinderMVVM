@@ -1,4 +1,4 @@
-package ca.kallanou.itunesfinder.extensions
+package ca.kallanou.itunesfinder.ui.base.framework.extensions
 
 import android.app.Activity
 import android.support.v4.app.FragmentActivity

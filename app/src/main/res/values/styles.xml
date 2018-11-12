@@ -17,7 +17,6 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.AppTitle" parent="AppTheme">
-        <item name="android:text">Robots</item>
         <item name="android:textColor">@color/colorAppTitle</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>

@@ -1,8 +1,10 @@
 package ca.kallanou.itunesfinder.ui.base.framework.extensions
 
 import android.content.Context
+import android.content.ContextWrapper
 import android.support.annotation.StringRes
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 
@@ -30,4 +32,15 @@ fun View.hide() {
 
 fun View.show() {
     this.visibility = View.VISIBLE
+}
+
+fun View.getParentActivity(): AppCompatActivity?{
+    var context = this.context
+    while (context is ContextWrapper) {
+        if (context is AppCompatActivity) {
+            return context
+        }
+        context = context.baseContext
+    }
+    return null
 }

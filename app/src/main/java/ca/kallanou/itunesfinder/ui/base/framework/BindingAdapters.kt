@@ -6,11 +6,11 @@ import android.databinding.BindingAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
-import ca.kallanou.itunesfinder.extensions.getParentActivity
+import ca.kallanou.itunesfinder.ui.base.framework.extensions.getParentActivity
 
 @BindingAdapter("mutableText")
 fun setMutableText(view: EditText,  text: MutableLiveData<String>?) {
-    val parentActivity:AppCompatActivity? = view.getParentActivity()
+    val parentActivity: AppCompatActivity? = view.getParentActivity()
     if(parentActivity != null && text != null) {
         text.observe(parentActivity, Observer { value -> view.setText(value ?: "")})
     }
@@ -20,6 +20,8 @@ fun setMutableText(view: EditText,  text: MutableLiveData<String>?) {
 fun setMutableVisibility(view: View, visibility: MutableLiveData<Int>?) {
     val parentActivity: AppCompatActivity? = view.getParentActivity()
     if(parentActivity != null && visibility != null) {
-        visibility.observe(parentActivity, Observer { value -> view.visibility = value ?: View.VISIBLE})
+        visibility.observe(parentActivity, Observer {
+            value -> view.visibility = value ?: View.VISIBLE
+        })
     }
 }

@@ -16,8 +16,8 @@ import ca.kallanou.itunesfinder.R
 import ca.kallanou.itunesfinder.databinding.DialogAlbumDetailBinding
 import ca.kallanou.itunesfinder.databinding.FragmentSearchBinding
 import ca.kallanou.itunesfinder.domain.models.Album
-import ca.kallanou.itunesfinder.extensions.hideKeyboard
 import ca.kallanou.itunesfinder.ui.base.framework.base.BaseFragment
+import ca.kallanou.itunesfinder.ui.base.framework.extensions.hideKeyboard
 import ca.kallanou.itunesfinder.ui.base.framework.extensions.observe
 import javax.inject.Inject
 
@@ -47,11 +47,9 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), Se
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        with(binding) {
+        binding.apply {
             viewModel = this@SearchFragment.viewModel
             searchMoviesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             searchMoviesRecyclerView.adapter = this@SearchFragment.viewModel.adapter
@@ -74,7 +72,7 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), Se
                 .setCancelable(false)
                 .setPositiveButton(android.R.string.ok, null)
         mBuilder.show()
-        with(binding) {
+        binding.apply {
             dialogAlbumGenreEditText.setText(album.primaryGenreName)
             dialogAlbumPriceEditText.setText(getString(R.string.dialog_album_price_format, album.collectionPrice, album.currency))
             dialogAlbumCopyrightEditText.setText(album.copyright)

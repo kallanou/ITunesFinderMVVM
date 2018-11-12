@@ -1,4 +1,4 @@
-package ca.kallanou.itunesfinder.extensions
+package ca.kallanou.itunesfinder.ui.base.framework.extensions
 
 import android.arch.lifecycle.MutableLiveData
 
