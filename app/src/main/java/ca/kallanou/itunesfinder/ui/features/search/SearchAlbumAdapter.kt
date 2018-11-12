@@ -44,11 +44,10 @@ class SearchAlbumAdapter: RecyclerView.Adapter<SearchAlbumAdapter.SearchAlbumVie
     }
 
     class SearchAlbumViewHolder(private val binding: ItemAlbumBinding, private val dateFormatter: SimpleDateFormat): RecyclerView.ViewHolder(binding.root){
-
         fun bind(album: Album, onItemClickListener: OnItemClickListener) {
             with(binding) {
                 Glide.with(root.context).load(album.getCover()).into(albumCover)
-                albumName.text = album.artistName
+                albumName.text = album.collectionName
                 albumReleaseDate.text = dateFormatter.format(album.releaseDate)
                 root.setOnClickListener { onItemClickListener.onAlbumClicked(album) }
             }
