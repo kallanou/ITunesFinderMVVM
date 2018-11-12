@@ -1,9 +1,9 @@
 package ca.kallanou.itunesfinder.ui.base.framework.extensions
 
 import android.app.Activity
-import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.FragmentActivity
 
 fun FragmentActivity.hideKeyboard() {
     val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

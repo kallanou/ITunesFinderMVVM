@@ -1,6 +1,5 @@
 package ca.kallanou.itunesfinder.data.networking.models
 
-import ca.kallanou.itunesfinder.data.networking.models.AlbumData
 import com.google.gson.annotations.SerializedName
 
 class AlbumListResult {

@@ -2,8 +2,8 @@ package ca.kallanou.itunesfinder.domain.usecases
 
 import ca.kallanou.itunesfinder.domain.framework.Transformer
 import ca.kallanou.itunesfinder.domain.framework.UseCase
-import ca.kallanou.itunesfinder.domain.repositories.RemoteAlbumsRepository
 import ca.kallanou.itunesfinder.domain.models.Album
+import ca.kallanou.itunesfinder.domain.repositories.RemoteAlbumsRepository
 import io.reactivex.Observable
 
 class SearchAlbumUseCase(transformer: Transformer<List<Album>>,

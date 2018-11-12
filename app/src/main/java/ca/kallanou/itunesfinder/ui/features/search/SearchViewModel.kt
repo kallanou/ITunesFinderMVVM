@@ -1,14 +1,14 @@
 package ca.kallanou.itunesfinder.ui.features.search
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.databinding.adapters.TextViewBindingAdapter
 import android.view.View
+import androidx.databinding.adapters.TextViewBindingAdapter
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import ca.kallanou.itunesfinder.domain.models.Album
 import ca.kallanou.itunesfinder.domain.usecases.SearchAlbumUseCase
-import ca.kallanou.itunesfinder.ui.base.framework.extensions.default
 import ca.kallanou.itunesfinder.ui.base.framework.SingleLiveEvent
 import ca.kallanou.itunesfinder.ui.base.framework.base.BaseViewModel
+import ca.kallanou.itunesfinder.ui.base.framework.extensions.default
 import java.text.Normalizer
 
 class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseViewModel() {

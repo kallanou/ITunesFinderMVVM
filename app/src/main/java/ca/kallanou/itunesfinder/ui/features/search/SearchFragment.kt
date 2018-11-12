@@ -1,16 +1,17 @@
 package ca.kallanou.itunesfinder.ui.features.search
 
-import android.arch.lifecycle.ViewModelProvider
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.kallanou.itunesfinder.ITunesFinderApp
 import ca.kallanou.itunesfinder.R
 import ca.kallanou.itunesfinder.databinding.DialogAlbumDetailBinding
@@ -51,7 +52,7 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), Se
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.apply {
             viewModel = this@SearchFragment.viewModel
-            searchMoviesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            searchMoviesRecyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             searchMoviesRecyclerView.adapter = this@SearchFragment.viewModel.adapter
             searchAlbumEditText.setOnEditorActionListener { _, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || event?.keyCode == KeyEvent.KEYCODE_ENTER)

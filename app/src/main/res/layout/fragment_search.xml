@@ -9,7 +9,7 @@
             type="ca.kallanou.itunesfinder.ui.features.search.SearchViewModel"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.features.main.MainActivity">
@@ -41,7 +41,7 @@
             android:src="@drawable/baseline_search_black_24"
             android:tint="@color/colorAccent"/>
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_movies_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -71,6 +71,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:mutableVisibility="@{viewModel.isLoading}"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

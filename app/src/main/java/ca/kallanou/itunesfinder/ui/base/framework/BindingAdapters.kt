@@ -1,11 +1,11 @@
 package ca.kallanou.itunesfinder.ui.base.framework
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.databinding.BindingAdapter
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import ca.kallanou.itunesfinder.ui.base.framework.extensions.getParentActivity
 
 @BindingAdapter("mutableText")

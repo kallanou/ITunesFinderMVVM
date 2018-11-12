@@ -2,11 +2,11 @@ package ca.kallanou.itunesfinder.ui.base.framework.extensions
 
 import android.content.Context
 import android.content.ContextWrapper
-import android.support.annotation.StringRes
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 
 fun View.alert(@StringRes message: Int) {
     Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
