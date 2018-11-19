@@ -1,4 +1,4 @@
-package ca.kallanou.itunesfinder.ui.features.search
+package ca.kallanou.itunesfinder.presentation.ui.features.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

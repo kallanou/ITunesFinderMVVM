@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ca.kallanou.itunesfinder">
+    package="ca.kallanou.itunesfinder.presentation">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="ca.kallanou.itunesfinder.ui.features.main.MainActivity"
+            android:name=".ui.features.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

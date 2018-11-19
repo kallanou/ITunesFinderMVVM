@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="ca.kallanou.itunesfinder.ui.features.search.SearchViewModel"/>
+            type="ca.kallanou.itunesfinder.presentation.ui.features.search.SearchViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
