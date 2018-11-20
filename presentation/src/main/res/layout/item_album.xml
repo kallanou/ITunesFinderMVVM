@@ -20,8 +20,8 @@
 
             <ImageView
                 android:id="@+id/album_cover"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:contentDescription="@string/app_name"/>
 
