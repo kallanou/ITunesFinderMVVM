@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import ca.kallanou.itunesfinder.presentation.R
 import ca.kallanou.itunesfinder.domain.models.Album
+import ca.kallanou.itunesfinder.presentation.R
 import ca.kallanou.itunesfinder.presentation.databinding.ItemAlbumBinding
-import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import java.text.SimpleDateFormat

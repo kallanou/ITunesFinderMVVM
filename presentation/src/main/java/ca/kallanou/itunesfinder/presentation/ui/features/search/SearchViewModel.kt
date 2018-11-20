@@ -1,7 +1,6 @@
 package ca.kallanou.itunesfinder.presentation.ui.features.search
 
 import android.view.View
-import androidx.databinding.adapters.TextViewBindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ca.kallanou.itunesfinder.domain.models.Album
@@ -15,39 +14,26 @@ class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseV
 
     lateinit var adapter: SearchAlbumAdapter
 
-    private var searchText = ""
-    private var searchTextChanged: TextViewBindingAdapter.OnTextChanged
+    val isLoading = MutableLiveData<Int>().default(View.GONE)
+    val isEmpty = MutableLiveData<Int>().default(View.GONE)
+    val searchTextAlbum = MutableLiveData<String>()
 
-    val isLoading: MutableLiveData<Int> = MutableLiveData<Int>().default(View.GONE)
-    val isEmpty: MutableLiveData<Int> = MutableLiveData<Int>().default(View.GONE)
-
-    private var _errorState = SingleLiveEvent<Throwable>(null)
+    private val _errorState = SingleLiveEvent<Throwable>(null)
     val errorState: LiveData<Throwable>
         get() = _errorState
 
-    init {
-        searchTextChanged = TextViewBindingAdapter.OnTextChanged { text, _, _, _ -> searchText = text.toString() }
-    }
+    fun searchClicked() {
+        var escapeText =  Normalizer.normalize(searchTextAlbum.value, Normalizer.Form.NFD).replace(Regex("[^A-Za-z0-9 ]"), "")
+        escapeText = escapeText.replace(" ", "+")
 
-    fun search(term: String) {
-        if (term.isEmpty()) {
+        if (escapeText.isEmpty()) {
             isLoading.value = View.GONE
 
         } else {
             isEmpty.value = View.GONE
             isLoading.value = View.VISIBLE
-            performSearch(term)
+            performSearch(escapeText)
         }
-    }
-
-    fun searchClicked() {
-        var escapeText =  Normalizer.normalize(searchText, Normalizer.Form.NFD).replace(Regex("[^A-Za-z0-9 ]"), "")
-        escapeText = escapeText.replace(" ", "+")
-        search(escapeText)
-    }
-
-    fun onSearchTextChanged(): TextViewBindingAdapter.OnTextChanged {
-        return searchTextChanged
     }
 
     private fun performSearch(term: String) {

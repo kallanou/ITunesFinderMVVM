@@ -12,9 +12,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ca.kallanou.itunesfinder.domain.models.Album
 import ca.kallanou.itunesfinder.presentation.ITunesFinderApp
 import ca.kallanou.itunesfinder.presentation.R
-import ca.kallanou.itunesfinder.domain.models.Album
 import ca.kallanou.itunesfinder.presentation.base.framework.base.BaseFragment
 import ca.kallanou.itunesfinder.presentation.base.framework.extensions.hideKeyboard
 import ca.kallanou.itunesfinder.presentation.base.framework.extensions.observe
