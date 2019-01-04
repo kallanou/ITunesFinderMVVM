@@ -13,7 +13,6 @@ import javax.inject.Singleton
     (NetworkModule::class),
     (DataModule::class)
 ])
-
 interface MainComponent {
 
     fun inject(searchAlbumsModule: SearchAlbumsModule): SearchSubComponent

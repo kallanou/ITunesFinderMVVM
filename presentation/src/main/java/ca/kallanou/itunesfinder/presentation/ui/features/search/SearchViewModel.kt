@@ -39,22 +39,23 @@ class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseV
     private fun performSearch(term: String) {
         addDisposable(searchMovieUseCase.search(term)
                 .subscribe({ albums ->
-                    displayResult(albums, null)
+                    displayResult(albums?.sortedByDescending { album: Album -> album.releaseDate }, null)
 
                 }, {
                     displayResult(listOf(), it)
                 }))
     }
 
-    private fun displayResult(albums: List<Album>, error: Throwable?) {
+    private fun displayResult(albums: List<Album>?, error: Throwable?) {
         isLoading.value = View.GONE
-        if(albums.isEmpty() || error != null) {
+        if(albums.isNullOrEmpty() || error != null) {
             isEmpty.value = View.VISIBLE
+            adapter.updateAlbums(listOf())
         } else {
             isEmpty.value = View.GONE
+            adapter.updateAlbums(albums)
         }
 
-        adapter.updateAlbums(albums)
         _errorState.value = error
     }
 
