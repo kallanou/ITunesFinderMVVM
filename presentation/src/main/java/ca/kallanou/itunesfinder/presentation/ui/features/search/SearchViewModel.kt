@@ -10,7 +10,7 @@ import ca.kallanou.itunesfinder.presentation.base.framework.base.BaseViewModel
 import ca.kallanou.itunesfinder.presentation.base.framework.extensions.default
 import java.text.Normalizer
 
-class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseViewModel() {
+class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase) : BaseViewModel() {
 
     lateinit var adapter: SearchAlbumAdapter
 
@@ -23,8 +23,9 @@ class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseV
         get() = _errorState
 
     fun searchClicked() {
-        var escapeText =  Normalizer.normalize(searchTextAlbum.value, Normalizer.Form.NFD).replace(Regex("[^A-Za-z0-9 ]"), "")
-        escapeText = escapeText.replace(" ", "+")
+        val escapeText = Normalizer.normalize(searchTextAlbum.value, Normalizer.Form.NFD)
+            .replace(Regex("[^A-Za-z0-9 ]"), "")
+            .replace(" ", "+")
 
         if (escapeText.isEmpty()) {
             isLoading.value = View.GONE
@@ -38,17 +39,21 @@ class SearchViewModel(private val searchMovieUseCase: SearchAlbumUseCase): BaseV
 
     private fun performSearch(term: String) {
         addDisposable(searchMovieUseCase.search(term)
-                .subscribe({ albums ->
-                    displayResult(albums?.sortedByDescending { album: Album -> album.releaseDate }, null)
+            .subscribe({ albums ->
+                displayResult(
+                    albums?.sortedByDescending { album: Album -> album.releaseDate },
+                    null
+                )
 
-                }, {
-                    displayResult(listOf(), it)
-                }))
+            }, {
+                displayResult(listOf(), it)
+            })
+        )
     }
 
     private fun displayResult(albums: List<Album>?, error: Throwable?) {
         isLoading.value = View.GONE
-        if(albums.isNullOrEmpty() || error != null) {
+        if (albums.isNullOrEmpty() || error != null) {
             isEmpty.value = View.VISIBLE
             adapter.updateAlbums(listOf())
         } else {

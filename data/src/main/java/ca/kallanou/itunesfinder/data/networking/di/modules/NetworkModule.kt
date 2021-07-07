@@ -22,17 +22,18 @@ class NetworkModule(private val baseUrl: String) {
     fun provideRetrofit(): Retrofit {
 
         val clientBuilder = OkHttpClient.Builder()
-        val logLevel: HttpLoggingInterceptor.Level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-        else HttpLoggingInterceptor.Level.NONE
+        val logLevel: HttpLoggingInterceptor.Level =
+            if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
+            else HttpLoggingInterceptor.Level.NONE
         clientBuilder.addNetworkInterceptor(StethoInterceptor())
-                .addInterceptor(HttpLoggingInterceptor().setLevel(logLevel))
+            .addInterceptor(HttpLoggingInterceptor().setLevel(logLevel))
 
         return Retrofit.Builder()
-                .client(clientBuilder.build())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(baseUrl)
-                .build()
+            .client(clientBuilder.build())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(baseUrl)
+            .build()
     }
 
     @Singleton

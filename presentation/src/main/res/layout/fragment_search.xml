@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="ca.kallanou.itunesfinder.presentation.ui.features.search.SearchViewModel"/>
+            type="ca.kallanou.itunesfinder.presentation.ui.features.search.SearchViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,7 +29,7 @@
             android:imeOptions="actionSearch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/search_button"
-            android:text="@={viewModel.searchTextAlbum}"/>
+            android:text="@={viewModel.searchTextAlbum}" />
 
         <ImageButton
             android:id="@+id/search_button"
@@ -39,7 +40,7 @@
             android:tint="@color/colorAccent"
             app:layout_constraintTop_toTopOf="@id/search_album_edit_text"
             app:layout_constraintBottom_toBottomOf="@id/search_album_edit_text"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_movies_recycler_view"
@@ -48,7 +49,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_album_edit_text"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
             android:id="@+id/search_movies_no_results_message"
@@ -59,7 +60,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:mutableVisibility="@{viewModel.isEmpty}"
-            android:text="@string/fragment_search_no_album_found"/>
+            android:text="@string/fragment_search_no_album_found" />
 
         <ProgressBar
             android:id="@+id/search_movies_progress"
@@ -69,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:mutableVisibility="@{viewModel.isLoading}"/>
+            app:mutableVisibility="@{viewModel.isLoading}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

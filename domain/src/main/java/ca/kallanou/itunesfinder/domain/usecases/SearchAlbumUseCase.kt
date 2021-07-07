@@ -6,8 +6,10 @@ import ca.kallanou.itunesfinder.domain.models.Album
 import ca.kallanou.itunesfinder.domain.repositories.RemoteAlbumsRepository
 import io.reactivex.Observable
 
-class SearchAlbumUseCase(transformer: Transformer<List<Album>>,
-                         private val albumRepo: RemoteAlbumsRepository): UseCase<List<Album>>(transformer) {
+class SearchAlbumUseCase(
+    transformer: Transformer<List<Album>>,
+    private val albumRepo: RemoteAlbumsRepository
+) : UseCase<List<Album>>(transformer) {
 
     companion object {
         private const val PARAM_SEARCH_QUERY = "param:term"

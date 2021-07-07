@@ -13,7 +13,7 @@
     <string name="dialog_album_title">Album details</string>
     <string name="dialog_album_genre">Primary genre name</string>
     <string name="dialog_album_price">Collection price</string>
-    <string name="dialog_album_price_format">%.2f %s</string>
+    <string name="dialog_album_price_format" formatted="false">%.2f %s</string>
     <string name="dialog_album_copyright">Copyright</string>
 
 </resources>

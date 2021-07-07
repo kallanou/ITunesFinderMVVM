@@ -8,20 +8,25 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 
-abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel>: Fragment() {
+abstract class BaseFragment<VB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
     protected lateinit var binding: VB
     protected lateinit var viewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, getVMFactory()).get(getViewModelClass())
+
+        this.viewModel = ViewModelProvider(this, this.getVMFactory())
+            .get(this.getViewModelClass())
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, layoutId(), container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        this.binding = DataBindingUtil.inflate(inflater, this.layoutId(), container, false)
         return binding.root
     }
 

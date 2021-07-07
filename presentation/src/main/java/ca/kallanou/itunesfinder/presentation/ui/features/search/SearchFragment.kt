@@ -25,7 +25,8 @@ import javax.inject.Inject
 /**
  * A placeholder fragment containing a simple view.
  */
-class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchAlbumAdapter.OnItemClickListener {
+class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(),
+    SearchAlbumAdapter.OnItemClickListener {
 
     @Inject
     lateinit var factory: SearchVMFactory
@@ -35,24 +36,30 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), Se
     override fun getVMFactory(): ViewModelProvider.Factory = factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (activity?.application as ITunesFinderApp).createSearchComponent().inject(this)
+        (this.requireActivity().application as ITunesFinderApp).createSearchComponent()
+            ?.inject(this)
         super.onCreate(savedInstanceState)
 
         viewModel.adapter = SearchAlbumAdapter()
         viewModel.adapter.setOnItemClickListener(this)
 
-        observe(viewModel.errorState) {
-            it -> it?.let {
+        observe(viewModel.errorState) { it ->
+            it?.let {
                 Toast.makeText(activity, it.message, Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.apply {
             viewModel = this@SearchFragment.viewModel
-            searchMoviesRecyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            searchMoviesRecyclerView.layoutManager =
+                LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             searchMoviesRecyclerView.adapter = this@SearchFragment.viewModel.adapter
             searchAlbumEditText.setOnEditorActionListener { _, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || event?.keyCode == KeyEvent.KEYCODE_ENTER)
@@ -66,16 +73,29 @@ class SearchFragment: BaseFragment<FragmentSearchBinding, SearchViewModel>(), Se
     }
 
     override fun onAlbumClicked(album: Album) {
-        val binding: DialogAlbumDetailBinding = DataBindingUtil.inflate(LayoutInflater.from(context!!), R.layout.dialog_album_detail, null, false)
-        val mBuilder = AlertDialog.Builder(context!!)
-                .setView(binding.root)
-                .setTitle(R.string.dialog_album_title)
-                .setCancelable(false)
-                .setPositiveButton(android.R.string.ok, null)
-        mBuilder.show()
+        val binding: DialogAlbumDetailBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(requireContext()),
+            R.layout.dialog_album_detail,
+            null,
+            false
+        )
+
+        AlertDialog.Builder(requireContext())
+            .setView(binding.root)
+            .setTitle(R.string.dialog_album_title)
+            .setCancelable(false)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
+
         binding.apply {
             dialogAlbumGenreEditText.setText(album.primaryGenreName)
-            dialogAlbumPriceEditText.setText(getString(R.string.dialog_album_price_format, album.collectionPrice, album.currency))
+            dialogAlbumPriceEditText.setText(
+                getString(
+                    R.string.dialog_album_price_format,
+                    album.collectionPrice,
+                    album.currency
+                )
+            )
             dialogAlbumCopyrightEditText.setText(album.copyright)
         }
     }

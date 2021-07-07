@@ -14,4 +14,6 @@ The goal in this little project is to fetch albums thought the Itunes API. (http
 - [Glide](https://github.com/bumptech/glide)
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)
 
+Android Studio Arctic Fox is needed ! (Compose is coming)
+
 Inspired by https://proandroiddev.com/a-guided-tour-inside-a-clean-architecture-code-base-48bb5cc9fc97

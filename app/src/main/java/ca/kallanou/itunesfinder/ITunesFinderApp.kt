@@ -28,9 +28,9 @@ class ITunesFinderApp: Application() {
 
     }
 
-    fun createSearchComponent(): SearchSubComponent {
+    fun createSearchComponent(): SearchSubComponent? {
         searchAlbumsComponent = mainComponent.inject(SearchAlbumsModule())
-        return searchAlbumsComponent!!
+        return searchAlbumsComponent
     }
 
     fun releaseSearchComponent() {

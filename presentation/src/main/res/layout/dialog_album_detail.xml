@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/dialog_album_genre"
                 android:focusable="false"
-                android:inputType="none"/>
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/dialog_album_price"
                 android:focusable="false"
-                android:inputType="none"/>
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/dialog_album_copyright"
                 android:focusable="false"
-                android:inputType="none"/>
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

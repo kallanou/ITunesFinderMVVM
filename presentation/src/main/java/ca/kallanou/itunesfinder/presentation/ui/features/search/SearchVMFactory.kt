@@ -5,10 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import ca.kallanou.itunesfinder.domain.usecases.SearchAlbumUseCase
 
 @Suppress("UNCHECKED_CAST")
-class SearchVMFactory(private val searchAlbumUseCase: SearchAlbumUseCase): ViewModelProvider.Factory {
+class SearchVMFactory(private val searchAlbumUseCase: SearchAlbumUseCase) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return SearchViewModel(searchAlbumUseCase) as T
+        return SearchViewModel(this.searchAlbumUseCase) as T
     }
 
 }

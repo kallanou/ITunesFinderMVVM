@@ -8,31 +8,31 @@ import ca.kallanou.itunesfinder.presentation.base.di.MainComponent
 import ca.kallanou.itunesfinder.presentation.base.di.search.SearchAlbumsModule
 import ca.kallanou.itunesfinder.presentation.base.di.search.SearchSubComponent
 
-class ITunesFinderApp: Application() {
+class ITunesFinderApp : Application() {
 
     private lateinit var mainComponent: MainComponent
     private var searchAlbumsComponent: SearchSubComponent? = null
 
     override fun onCreate() {
         super.onCreate()
-        initDependencies()
+        this.initDependencies()
     }
 
     private fun initDependencies() {
-        mainComponent = DaggerMainComponent.builder()
-                //.appModule(AppModule(applicationContext))
-                .networkModule(NetworkModule(getString(R.string.api_base_url)))
-                .dataModule(DataModule())
-                .build()
+        this.mainComponent = DaggerMainComponent.builder()
+            //.appModule(AppModule(applicationContext))
+            .networkModule(NetworkModule(this.getString(R.string.api_base_url)))
+            .dataModule(DataModule())
+            .build()
 
     }
 
-    fun createSearchComponent(): SearchSubComponent {
-        searchAlbumsComponent = mainComponent.inject(SearchAlbumsModule())
-        return searchAlbumsComponent!!
+    fun createSearchComponent(): SearchSubComponent? {
+        this.searchAlbumsComponent = this.mainComponent.inject(SearchAlbumsModule())
+        return this.searchAlbumsComponent
     }
 
     fun releaseSearchComponent() {
-        searchAlbumsComponent = null
+        this.searchAlbumsComponent = null
     }
 }
